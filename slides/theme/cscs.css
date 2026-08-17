@@ -1,0 +1,410 @@
+/* @theme cscs */
+
+/*
+ * CSCS Marp theme — Alps technical training @ Swiss AI Initiative Annual Meeting 2026.
+ *
+ * Palette, typography and card layout ported from the ML Platform drop-in HTML deck
+ * (github.com/candrea85/ml-platform-drop-in). Logos are the ones shipped in that deck,
+ * extracted to assets/logos/.
+ *
+ * TODO(brand): confirm with CSCS communications that #D61F26 and these logo files are
+ * the current approved assets before the session.
+ */
+
+@import 'default';
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --cscs-red: #D61F26;
+  --cscs-red-dark: #A8171D;
+  --cscs-red-light: #F3E0E1;
+  --text-primary: #1A1A1A;
+  --text-secondary: #555555;
+  --text-muted: #888888;
+  --bg-white: #FFFFFF;
+  --bg-light: #F7F7F8;
+  --bg-dark: #1A1A1A;
+  --border: #E5E5E5;
+  --mono: 'SF Mono', 'Fira Code', ui-monospace, Menlo, Consolas, monospace;
+}
+
+/* ── Slide canvas ───────────────────────────────────────────────────────── */
+
+section {
+  width: 1280px;
+  height: 720px;
+  padding: 104px 64px 60px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 22px;
+  line-height: 1.55;
+  color: var(--text-primary);
+  background-color: var(--bg-white);
+  background-image: url('../../assets/logos/cscs.png'), url('../../assets/logos/eth.png');
+  background-repeat: no-repeat, no-repeat;
+  background-position: 48px 26px, calc(100% - 48px) 34px;
+  background-size: 132px auto, 110px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* Rule under the logo band */
+section::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 86px;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ── Footer and page number ─────────────────────────────────────────────── */
+
+footer {
+  left: 48px;
+  bottom: 18px;
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+section::after {
+  right: 48px;
+  bottom: 18px;
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 500;
+  text-shadow: none;
+}
+
+/* ── Typography ─────────────────────────────────────────────────────────── */
+
+h1 {
+  font-size: 38px;
+  font-weight: 700;
+  line-height: 1.18;
+  color: var(--text-primary);
+  margin: 0 0 6px;
+}
+
+/* The paragraph directly after the title reads as a subtitle. */
+h1 + p {
+  font-size: 17px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  margin: 0 0 28px;
+}
+
+h2 {
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 12px;
+}
+
+h3 {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--cscs-red);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0 0 10px;
+}
+
+/* A second kicker in the same column needs air above it. */
+ul + h3,
+p + h3,
+pre + h3,
+table + h3 { margin-top: 20px; }
+
+strong { font-weight: 600; }
+
+a {
+  color: var(--cscs-red);
+  text-decoration: none;
+  border-bottom: 1px solid var(--cscs-red-light);
+}
+
+/* ── Lists ──────────────────────────────────────────────────────────────── */
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+ul > li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+
+ul > li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--cscs-red);
+}
+
+ul ul {
+  margin-top: 6px;
+}
+
+ul ul > li {
+  font-size: 0.85em;
+  color: var(--text-secondary);
+  margin-bottom: 4px;
+}
+
+ul ul > li::before {
+  background: var(--text-muted);
+  width: 5px;
+  height: 5px;
+}
+
+ol {
+  padding-left: 22px;
+  margin: 0;
+}
+
+ol > li {
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+
+/* ── Code ───────────────────────────────────────────────────────────────── */
+
+code {
+  font-family: var(--mono);
+  font-size: 0.86em;
+  background: var(--bg-light);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1px 5px;
+}
+
+/* overflow is deliberately visible: a code block that does not fit should spill and
+   look broken during review, rather than being silently truncated on stage. */
+pre {
+  background: var(--bg-dark);
+  border-radius: 10px;
+  padding: 18px 22px;
+  margin: 0 0 14px;
+  overflow: visible;
+}
+
+pre code {
+  background: transparent;
+  border: none;
+  padding: 0;
+  color: #F0F0F0;
+  font-size: 16px;
+  line-height: 1.62;
+}
+
+/* ── Tables ─────────────────────────────────────────────────────────────── */
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 17px;
+}
+
+th {
+  text-align: left;
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: var(--text-muted);
+  border-bottom: 2px solid var(--border);
+  padding: 8px 14px 8px 0;
+  background: transparent;
+}
+
+td {
+  border-bottom: 1px solid var(--border);
+  padding: 10px 14px 10px 0;
+  vertical-align: top;
+  background: transparent;
+}
+
+/* ── Layout helpers ─────────────────────────────────────────────────────── */
+
+.cols,
+.cols-3,
+.cols-wide,
+.cols-narrow {
+  display: grid;
+  gap: 28px;
+  align-items: start;
+}
+
+.cols        { grid-template-columns: 1fr 1fr; }
+.cols-3      { grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+.cols-wide   { grid-template-columns: 1.6fr 1fr; }
+.cols-narrow { grid-template-columns: 1fr 1.6fr; }
+
+.card {
+  background: var(--bg-light);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 22px 26px;
+}
+
+.card > *:last-child { margin-bottom: 0; }
+
+.card.dark {
+  background: var(--bg-dark);
+  border-color: transparent;
+  color: #FFFFFF;
+}
+.card.dark h2 { color: #FFFFFF; }
+.card.dark h3 { color: #F3B6B9; }
+.card.dark li { color: #E0E0E0; }
+.card.dark li::before { background: #F3B6B9; }
+.card.dark a { color: #FFFFFF; border-bottom-color: rgba(255, 255, 255, 0.35); }
+.card.dark code { background: rgba(255, 255, 255, 0.1); border-color: rgba(255, 255, 255, 0.2); color: #FFFFFF; }
+
+.card.red {
+  background: var(--cscs-red);
+  border-color: transparent;
+  color: #FFFFFF;
+}
+.card.red h2, .card.red h3 { color: #FFFFFF; }
+.card.red li { color: #FFE7E7; }
+.card.red li::before { background: rgba(255, 255, 255, 0.6); }
+
+/* Accent bar — the one takeaway of the slide. */
+.accent {
+  background: var(--cscs-red-light);
+  border-left: 4px solid var(--cscs-red);
+  border-radius: 0 8px 8px 0;
+  padding: 14px 22px;
+  margin-top: auto;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--cscs-red-dark);
+  line-height: 1.5;
+}
+
+.accent.quiet {
+  background: var(--bg-light);
+  color: var(--text-primary);
+}
+
+.tag {
+  display: inline-block;
+  background: var(--cscs-red);
+  color: #FFFFFF;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 3px 10px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.url {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 18px;
+  font-weight: 600;
+  background: var(--bg-white);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 16px;
+}
+
+/* Who this slide is for. Absolutely positioned on purpose: it must never push the
+   content down, because several slides are already at the bottom of their space. Sits
+   top-right, opposite the title, in the same place on every slide. */
+.audience {
+  position: absolute;
+  top: 100px;
+  right: 64px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  color: var(--cscs-red);
+  /* Not uppercased: "PIs" would render as "PIS". */
+}
+
+.audience.all { color: var(--text-muted); }
+
+/* Stacked blocks inside one grid column. Three cards only fit if they run tighter
+   than a single card would. */
+.stack { display: grid; gap: 12px; align-content: start; }
+.stack > .card { padding: 16px 22px; }
+
+/* For commands that are genuinely long, e.g. the SSH tunnel one-liner. */
+.code-sm pre { padding: 13px 16px; }
+.code-sm pre code { font-size: 13px; line-height: 1.55; }
+
+.small { font-size: 16px; color: var(--text-secondary); }
+.muted { color: var(--text-muted); }
+.push  { margin-top: auto; }
+
+/* Screenshot placeholder — replaced by a real capture before the session. */
+.shot {
+  border: 2px dashed var(--cscs-red);
+  border-radius: 12px;
+  background: var(--cscs-red-light);
+  color: var(--cscs-red-dark);
+  padding: 26px;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 260px;
+}
+
+/* ── Slide variants ─────────────────────────────────────────────────────── */
+
+/* Module divider: full-bleed red, no logo band. */
+section.divider {
+  background-color: var(--cscs-red);
+  background-image: none;
+  color: #FFFFFF;
+  justify-content: center;
+  padding: 64px;
+}
+section.divider::before { display: none; }
+section.divider h1 { color: #FFFFFF; font-size: 52px; }
+section.divider h1 + p { color: rgba(255, 255, 255, 0.85); font-size: 21px; }
+section.divider .tag { background: rgba(255, 255, 255, 0.18); }
+
+/* The "who should listen when" note on a module divider. */
+section.divider .split {
+  margin-top: 30px;
+  padding-left: 20px;
+  border-left: 3px solid rgba(255, 255, 255, 0.45);
+  font-size: 18px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.92);
+}
+section.divider .split strong { color: #FFFFFF; }
+section.divider footer,
+section.divider::after { color: rgba(255, 255, 255, 0.6); }
+section.divider a { color: #FFFFFF; border-bottom-color: rgba(255, 255, 255, 0.4); }
+
+/* Title slide. */
+section.lead { justify-content: center; }
+section.lead h1 { font-size: 46px; }
+
+/* "Where to read more" slide. */
+section.ref h2 { font-size: 19px; }
+section.ref .card.dark li { font-size: 17px; margin-bottom: 12px; }
+
+/* Backup slides get a visible marker. */
+section.backup .tag { background: var(--text-muted); }
