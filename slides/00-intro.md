@@ -153,7 +153,7 @@ This is where **production runs** go.
 
 **A100 nodes.** Smaller.
 
-Data processing, development, x86 workloads and inference services. **Test and development**, best effort.
+Data processing, development and x86 workloads. **Test and development**, best effort.
 
 </div>
 </div>
@@ -169,7 +169,7 @@ SAY:
 - The ML Platform gives you compute, storage and expertise.
 - Two clusters, and people mix them up.
 - Clariden is Grace-Hopper, GH200. It is the main system. Production runs go here.
-- Bristen is A100, smaller. Data processing, development, x86 work, inference services.
+- Bristen is A100, smaller. Data processing, development, x86 work.
 - Bristen is best effort. Read the red bar out loud, it is the docs talking about themselves.
 NEXT: Here is what we are going to cover in the next hour.
 DOCS: docs.cscs.ch/platforms/mlp/ · /clusters/clariden/ · /clusters/bristen/

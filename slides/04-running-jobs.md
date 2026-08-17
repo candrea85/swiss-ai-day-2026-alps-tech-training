@@ -24,10 +24,10 @@ Data in the right place, an environment that works. Now make it run — repeated
 
 <!--
 START AT T+45:00. Check the presenter timer now.
-CUT IF LATE: Cut "Inference and serving". Point at the tutorials link on the closing slide instead.
+CUT IF LATE: Cut "You are billed for the node, not for the work". Say it in one line over the GH200 slide instead.
 SAY:
 - Ben has his data and his container. Now he has to actually run.
-- Four things in twelve minutes: Slurm, whether your job is efficient, the web ways in, and serving.
+- Three things in twelve minutes: Slurm, whether your job is efficient, and the web ways in.
 NEXT: Slurm, and the one flag that decides who pays.
 -->
 
@@ -259,53 +259,9 @@ SAY:
 POINT AT THE RED BAR:
 - And you do not have to write the HTTP yourself. There is a web console on top, console dot mlp dot cscs dot ch.
 - We have backup slides on it if the discussion wants them.
-NEXT: One last thing — serving a model.
+NEXT: Where to read more.
 DOCS: docs.cscs.ch/access/firecrest/ · eth-cscs.github.io/firecrest-v2/
 -->
-
----
-
-<div class="audience all">Everyone</div>
-
-# Inference and serving
-
-<!-- PLACEHOLDER — module 4 owner: this is the thinnest slide in the module. -->
-
-<div class="cols">
-<div>
-
-- **Bristen** hosts inference services — that is part of what it is for
-- A served model is a **service on a compute node**, reached through the Ela tunnel from module 1
-- The ML tutorials have a complete worked example
-
-</div>
-<div class="card">
-
-### Three worked tutorials
-
-- **LLM inference** — single node, NGC container
-- **LLM fine-tuning** — multi-GPU, single node, `accelerate`
-- **LLM pre-training** — multi-node, `nanotron`, `torchrun`
-
-`docs.cscs.ch/tutorials/ml/`
-
-</div>
-</div>
-
-<!--
-SAY:
-- Last piece. Serving.
-- Bristen exists partly for this — inference services live there rather than on Clariden.
-- Mechanically, a served model is just a service running on a compute node, and you reach it with the SSH tunnel from module 1. The whole story closes there.
-- On the right, three complete tutorials. Inference on one node, fine-tuning on one node with accelerate, and multi-node pre-training with nanotron.
-- If you only open one link from this hour, open that one.
-NEXT: Where to read more.
-DOCS: docs.cscs.ch/tutorials/ml/
--->
-
-<!-- TODO(verify): "Bristen hosts inference services" comes from the MLP overview page
-wording ("inference services"). Module 4 owner: confirm what is actually offered and
-whether there is a documented serving path, or reduce this to the tutorials link. -->
 
 ---
 
