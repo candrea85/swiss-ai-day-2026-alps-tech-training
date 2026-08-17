@@ -52,7 +52,7 @@ Putting data in the wrong one is the most common and most expensive mistake here
 
 <div class="accent">
 
-Scratch is **not** storage. It is a workspace that deletes itself.
+**Scratch** is per user and is **not** backed up. **Store** is per project and **is** backed up.
 
 </div>
 
@@ -65,12 +65,18 @@ SAY:
 - Three scratch filesystems. The difference between the first two is the next slide.
 - Ritom is newer, Clariden only, and its cleanup policy is still being finalised. Do not build a workflow on it yet.
 - Then two project areas: the store, which is backed up, and datacache, which is not and which you have to ask for.
-POINT AT THE CLEANUP COLUMN:
+GIVE THEM THE MODEL FIRST. Two words, two properties:
+- Scratch is yours. Per user. Not backed up.
+- Store belongs to the project. Shared. Backed up.
+- Everything else on this slide hangs off those two.
+THEN POINT AT THE CLEANUP COLUMN:
 - This is the column that hurts people.
-- Files not accessed for 14 days on iopsstor are deleted. 30 days on capstor.
-- Not archived. Deleted. There are no backups on scratch.
-READ THE RED BAR:
-- Scratch is not storage. It is a workspace that deletes itself.
+- Say the mechanism precisely, because it is not what they assume.
+- It is not age. It is last access time.
+- A file nobody has read for 14 days on iopsstor is deleted. 30 days on capstor.
+- So a dataset you keep reading survives. A checkpoint you wrote and forgot does not.
+- Not archived. Deleted.
+- Ritom is the exception: its policy is still being finalised, so do not assume anything there yet.
 NEXT: So which scratch, for what?
 DOCS: docs.cscs.ch/storage/filesystems/ · docs.cscs.ch/platforms/mlp/
 -->
@@ -319,7 +325,7 @@ Your **PI** opens a Service Desk ticket with the use case, and the space and ino
 
 <div class="accent">
 
-No cleanup **and** no backup. The project owns its own data hygiene.
+Project-level like the store, but **not backed up**, like scratch. And nothing is ever deleted for you.
 
 </div>
 
@@ -333,7 +339,9 @@ SAY, start from the problem it solves:
 - datacache is the third option. Fast NVMe, shared across the project, and never cleaned automatically.
 - One copy of the dataset. The whole project reads it. It is still there next month.
 POINT AT THE RED BAR:
-- Two warnings. It is not backed up, like scratch. And nothing is deleted for you.
+- Place it against the model from two slides ago. Scratch is yours and not backed up. Store is the project's and is backed up.
+- datacache is the odd one: it belongs to the project, like the store, but it is not backed up, like scratch.
+- And unlike both, nothing is ever deleted for you.
 - Within your quota on capacity and inodes, the project owns its own space hygiene. That is a real responsibility.
 HOW TO GET IT:
 - It is not created by default. Your PI opens a Service Desk ticket saying what it is for and how much space and how many inodes.
