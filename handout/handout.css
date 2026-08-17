@@ -1,0 +1,126 @@
+/* @theme handout */
+
+/*
+ * One-page A4 cheat sheet, printed and handed to attendees.
+ *
+ * Marp derives the page size from the section width/height below, which is why this
+ * lives in a real theme file rather than in the Markdown's inline style block.
+ * If anything spills off the page it will be visible as a second, near-empty page in
+ * build/quickstart.pdf — that is the signal to cut content, not to shrink the font.
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+section {
+  /* A4 portrait at 96 dpi. Kept in px, not mm: Marp's image export cannot
+     deserialise millimetre page sizes, and Chromium prints 794x1123 px as A4. */
+  width: 794px;
+  height: 1123px;
+  padding: 48px 52px 38px;
+  font-family: 'Inter', -apple-system, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 10.5px;
+  line-height: 1.45;
+  color: #1A1A1A;
+  background: #FFFFFF;
+}
+
+h1 {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 2px;
+}
+
+h1 + p {
+  font-size: 9.5px;
+  color: #666666;
+  margin: 0 0 12px;
+}
+
+h2 {
+  font-size: 9.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: #D61F26;
+  border-bottom: 1px solid #E5E5E5;
+  padding-bottom: 3px;
+  margin: 13px 0 6px;
+}
+
+/* First heading in each column should not push the column down. */
+.cols > div > h2:first-child { margin-top: 0; }
+
+p { margin: 0 0 6px; }
+
+ul {
+  margin: 0 0 6px;
+  padding-left: 14px;
+}
+
+li { margin-bottom: 2px; }
+
+pre {
+  background: #F7F7F8;
+  border: 1px solid #E5E5E5;
+  border-radius: 5px;
+  padding: 7px 9px;
+  margin: 0 0 7px;
+  overflow: visible;
+}
+
+pre code {
+  font-family: 'SF Mono', Menlo, Consolas, monospace;
+  font-size: 9px;
+  line-height: 1.5;
+  color: #1A1A1A;
+}
+
+code {
+  font-family: 'SF Mono', Menlo, Consolas, monospace;
+  font-size: 9.5px;
+  background: #F2F2F3;
+  border-radius: 3px;
+  padding: 0 3px;
+}
+
+blockquote {
+  margin: 0 0 6px;
+  padding-left: 9px;
+  border-left: 3px solid #D61F26;
+  color: #444444;
+  font-style: italic;
+}
+
+blockquote p { margin: 0; }
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 10px;
+  margin-bottom: 6px;
+}
+
+td {
+  border-bottom: 1px solid #E5E5E5;
+  padding: 3px 6px 3px 0;
+  vertical-align: top;
+}
+
+.cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 34px;
+}
+
+/* Full-width band under the two columns, for commands too long to fit a column. */
+.wide {
+  margin-top: 10px;
+  border-top: 2px solid #E5E5E5;
+  padding-top: 8px;
+}
+
+.note {
+  font-size: 8px;
+  color: #888888;
+  margin-top: 8px;
+}
