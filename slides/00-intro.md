@@ -35,6 +35,56 @@ NEXT: First, what is the machine you are all using?
 
 <div class="audience all">Everyone</div>
 
+# Today is a maintenance day
+
+Expect limitations. Nothing in this hour depends on the machine being up.
+
+<div class="cols">
+<div>
+
+- Systems may be **unavailable or degraded** today
+- If you try to log in during the session, it may not work
+- That is expected. It is **not** your SSH key
+
+</div>
+<div class="card">
+
+### So we planned around it
+
+Everything you will see is a **screenshot or a recording**. There are no live demos.
+
+Ask your question anyway — we will answer it, and show you for real afterwards.
+
+</div>
+</div>
+
+<div class="accent">
+
+Try the commands tomorrow, not now. They are all on the handout.
+
+</div>
+
+<!--
+Housekeeping, twenty seconds, then move on.
+SAY:
+- One practical thing before we start.
+- Today is a maintenance day. Systems may be down or degraded.
+- So if you try to log in during this hour and it does not work, that is expected. It is not your key and it is not you.
+- We planned for it. Everything you will see is a screenshot or a recording. No live demos.
+- That was going to be true anyway. Conference wifi and MFA on stage are a bad combination.
+- Ask your questions as they come. We will answer, and we can show you for real afterwards or at the User Day on Friday.
+NEXT: So, what is the machine you are all using?
+-->
+
+<!-- TODO(verify): confirm the exact maintenance window and which services are affected
+before the session — the clusters, the portal, JupyterLab and the docs may not all be
+down at the same time, or at all. If only some are affected, name them here rather than
+saying "systems". If the maintenance moves, this slide comes out. -->
+
+---
+
+<div class="audience all">Everyone</div>
+
 # Alps is one machine with many faces
 
 You do not get "an Alps account". You get a project on a **platform**.
