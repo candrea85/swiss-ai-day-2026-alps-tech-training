@@ -44,7 +44,7 @@ NEXT: Start at the beginning. How do you get a project at all?
 
 # Small and large are two different processes
 
-You apply to the Swiss AI Initiative. CSCS sets the policies and runs what you are granted.
+You choose which one to apply for. The Swiss AI Initiative decides. CSCS opens the project and runs it.
 
 <div class="cols-wide">
 <div>
@@ -78,8 +78,14 @@ The 4th call for large projects is open right now — **3 August to 14 September
 </div>
 
 <!--
-SAY:
-- There are two kinds of project. People often apply to the wrong one.
+SAY FIRST, who does what. People ask us for hours and we cannot give them:
+- You decide whether to apply for a small or a large project. That choice is yours.
+- You apply to the Swiss AI Initiative, not to us. They decide.
+- Swiss AI tells us to open the small ones as they are approved, all year round.
+- And twice a year they hand us the large ones, together.
+- CSCS opens the project and runs it. We do not decide who gets what.
+THEN THE TWO KINDS:
+- People often apply to the wrong one.
 - Small: up to 32,000 GPU hours. Six months. Reviewed all year.
 - So you can ask today and start on the first day of next month.
 - Large: 500,000 GPU hours and more. Twelve months.
