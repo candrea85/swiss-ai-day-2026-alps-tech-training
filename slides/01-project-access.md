@@ -134,7 +134,7 @@ Administrators and managers **invite people** and **assign roles**.
 
 - Your **email address** identifies you — one address, one account
 - Open while **at least one** project is open
-- When the last one closes: **90 days** to retrieve your data
+- An end date stops the **compute**, not the project: **90 days** of grace follow
 - A later invitation **re-enables** the same account
 
 </div>
@@ -157,8 +157,10 @@ NOW THE IMPORTANT PART. Say it slowly:
 - Your account is identified by your email address. One address, one account.
 - Your account belongs to projects, and it can belong to several at the same time.
 - It stays open while at least one of those projects is open.
-- When the last project closes, the account is closed too.
-- After that you have 90 days to copy your data out.
+- Be precise about the end, because this is the part people get wrong.
+- A project's end date stops your compute. That is what you feel first.
+- The project itself does not close yet. It stays active for another 90 days so you can get your data out.
+- Only after those 90 days does it close. And the account closes with the last of your projects.
 - Good news: if someone invites you to a project later, the same account is switched back on.
 - People forget this every year. Say it slowly.
 NEXT: Anna has a project and a role. Let us open the portal.
@@ -345,7 +347,7 @@ Every project gets a credit in GPU hours, spent as your jobs run. Each month has
      whole block free of blank lines, which would close the HTML block early. -->
 <div class="diagram">
 <svg viewBox="0 0 1160 320" width="100%" role="img"
-     aria-label="Top: three example months of usage as bars against two thresholds, an expected line and a minimal line below it separated by the grace. Above expected is fine, in between rolls over, below the minimal the gap is lost. Bottom: the project timeline, 6 or 12 months, then a 90-day data-retrieval period, then access is gone.">
+     aria-label="Top: three example months of usage as bars against two thresholds, an expected line and a minimal line below it separated by the grace. Above expected is fine, in between rolls over, below the minimal the gap is lost. Bottom: the project timeline, 6 or 12 months, then compute stops, then a 90-day grace period in which the project stays active for data retrieval only, then it closes.">
   <g font-family="Inter, sans-serif">
     <!-- ── row 1: the monthly rule ───────────────────────────────────────── -->
     <text x="90" y="20" font-size="13" font-weight="600" fill="#888888" letter-spacing="0.6">IN ANY GIVEN MONTH</text>
@@ -385,9 +387,9 @@ Every project gets a credit in GPU hours, spent as your jobs run. Each month has
     <line x1="870" y1="274" x2="870" y2="302" stroke="#1A1A1A" stroke-width="2"/>
     <line x1="1060" y1="278" x2="1060" y2="298" stroke="#1A1A1A" stroke-width="2"/>
     <text x="625" y="310" font-size="13" fill="#555555" text-anchor="middle">6 or 12 months</text>
-    <text x="870" y="264" font-size="14" font-weight="600" text-anchor="middle">project ends</text>
-    <text x="965" y="310" font-size="13" font-weight="600" fill="#D61F26" text-anchor="middle">90 days — retrieve your data</text>
-    <text x="1074" y="293" font-size="13" fill="#555555">gone</text>
+    <text x="870" y="264" font-size="14" font-weight="600" text-anchor="middle">compute stops</text>
+    <text x="965" y="310" font-size="13" font-weight="600" fill="#D61F26" text-anchor="middle">90 days grace — data only</text>
+    <text x="1074" y="293" font-size="13" fill="#555555">closes</text>
   </g>
 </svg>
 </div>
@@ -415,7 +417,9 @@ NOW WALK THROUGH THE THREE BARS, left to right:
 - Right bar: you fell below the minimal. The red box is credit you lost. It does not come back.
 THEN THE TIMELINE AT THE BOTTOM:
 - The project runs 6 or 12 months.
-- Then it ends. Then you have 90 days to copy your data out. Then access stops.
+- At the end date your compute stops. No more jobs.
+- But the project does not close. It stays active for another 90 days, for data only.
+- After those 90 days it closes for real.
 POINT AT THE RED BAR:
 - If you run out of credit early, you are not stuck.
 - You can still use the low partition. About two months of your budget.
@@ -432,7 +436,12 @@ Re-check them once it is merged into docs.cscs.ch.
 The slide now PRINTS the URL docs.cscs.ch/platforms/mlp/policies/, which does not resolve
 yet. Load it in a browser before the session. If it is still not live on 26 August, fall
 back to docs.cscs.ch/platforms/mlp/ here and on the "Where to read more" slide — a URL
-that 404s on a projector costs more credibility than a less precise one. -->
+that 404s on a projector costs more credibility than a less precise one.
+
+Also: the policies page says only that a project "remains accessible for a grace period
+of 90 days for data retrieval". That the end date stops COMPUTE while the project itself
+stays active comes from Andrea, not from the page. It is the distinction the timeline now
+makes, so it is worth getting written down — see notes/docs-gaps.md. -->
 
 ---
 

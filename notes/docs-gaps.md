@@ -51,6 +51,15 @@ of the lifecycle. Both ends are missing.
       between a user believing their account was deleted and understanding that it is
       dormant, and it is worth one sentence.
 
+## ML Platform policies — what the grace period actually suspends
+
+- [ ] The policies page says a project "remains accessible for a grace period of 90 days
+      for data retrieval". It does not say what stops at the end date and what does not.
+      The behaviour is: the **end date stops the compute**, the project itself **stays
+      active** for those 90 days, and only then does it close. Users read "the project
+      ends" and assume everything goes at once, including their data. One sentence on
+      that page would prevent a recurring panic.
+
 ## ML Platform policies — pending merge
 
 - [ ] The policies page is still only a preview at
