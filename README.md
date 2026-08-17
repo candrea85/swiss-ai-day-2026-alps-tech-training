@@ -9,7 +9,8 @@
 >   from `docs.cscs.ch` so that no module owner starts from a blank page. Their voice is
 >   generic and several slides are marked `PLACEHOLDER`.
 > - Slides carrying `TODO(verify)` contain claims that are **correct but not yet
->   traceable to public documentation** — see [`notes/docs-gaps.md`](notes/docs-gaps.md).
+>   traceable to public documentation** — there are 16 of them, listed in
+>   [`notes/docs-gaps.md`](notes/docs-gaps.md).
 > - Some figures come from a **documentation preview** that has not been merged into
 >   `docs.cscs.ch` yet, and may change.
 >
@@ -38,7 +39,7 @@ Press `p` in the deck for presenter view: speaker notes, next slide and a timer.
 |---|---|---|---|---|
 | 0 | Alps, the ML Platform, and the next hour | 5 min | TBD | scaffold |
 | 1 | Project lifecycle and access | 12 min | **Andrea Ceriani** | on budget |
-| 2 | Data and storage | 13 min | TBD | scaffold |
+| 2 | Data and storage | 13 min | TBD | scaffold — covers the new `datacache` |
 | 3 | Software and containers | 15 min | TBD | scaffold |
 | 4 | Running and automating | 12 min | TBD | scaffold |
 | 5 | Where to go from here | 3 min | TBD | scaffold |

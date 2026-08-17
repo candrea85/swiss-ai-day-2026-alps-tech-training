@@ -73,6 +73,7 @@ SAY:
 - We planned for it. Everything you will see is a screenshot or a recording. No live demos.
 - That was going to be true anyway. Conference wifi and MFA on stage are a bad combination.
 - Ask your questions as they come. We will answer, and we can show you for real afterwards or at the User Day on Friday.
+- One upside worth mentioning: this maintenance is what delivers the new datacache storage area. Module 2 will show you what it is for.
 NEXT: So, what is the machine you are all using?
 -->
 

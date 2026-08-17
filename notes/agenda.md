@@ -21,16 +21,16 @@ Every module should be able to say where we are in that story.
 
 | # | Module | Budget | Owner | Slides | Drafted | Status |
 |---|---|---|---|---|---|---|
-| 0 | Welcome — what Alps and the ML Platform are, what this hour covers | 5 min | TBD | `slides/00-intro.md` | 5 | scaffold |
+| 0 | Welcome — what Alps and the ML Platform are, what this hour covers | 5 min | TBD | `slides/00-intro.md` | 6 | scaffold |
 | 1 | **Project lifecycle and access** — request, portal, invites, resources, first login | **12 min** | **Andrea** | `slides/01-project-access.md` | 12 | **on budget** |
 | 2 | Data and storage lifecycle — filesystems, quotas, moving data in, where training data lives | 13 min | TBD | `slides/02-data-storage.md` | 8 | scaffold, 5 min spare |
 | 3 | Software and containers — uenv, Container Engine, Alps-extended images, best practices | 15 min | TBD | `slides/03-software-containers.md` | 8 | scaffold, 7 min spare |
-| 4 | Running and automating — Slurm, job efficiency, JupyterLab, FirecREST, inference and serving | 12 min | TBD | `slides/04-running-jobs.md` | 8 | scaffold, 4 min spare |
+| 4 | Running and automating — Slurm, job efficiency, JupyterLab, FirecREST | 12 min | TBD | `slides/04-running-jobs.md` | 7 | scaffold, 5 min spare |
 | 5 | Wrap-up — support channels, User Day (28 Aug), what we did not cover | 3 min | TBD | `slides/05-wrapup.md` | 4 | scaffold |
 | — | Open discussion — planned work, suggestions, requests | 30 min | all | — | — | — |
 | — | Backup, shown on request only | — | — | `slides/06-backup.md` | 7 | HPC Console block done |
 
-**45 of 60 minutes drafted.** The slack is deliberate: modules 2 to 4 are scaffolding, and
+**46 of 60 minutes drafted.** The slack is deliberate: modules 2 to 4 are scaffolding, and
 their owners should spend it on the one worked example they know best, not on more
 bullets. `make check` reports the split and excludes backup slides from the budget.
 
@@ -47,10 +47,10 @@ freely rather than treat this as a draft to defend.
 
 - **1 → 2**: Ben has a shell on Clariden and an empty home directory. His first
   question is where to put two terabytes of training data.
-- **2 → 3**: the data is on the right filesystem. Now it needs an environment that
-  can read it.
+- **2 → 3**: the data is on the right filesystem — including the new `datacache`, which
+  goes live the morning of the session. Now it needs an environment that can read it.
 - **3 → 4**: the environment exists. Now it has to run at scale, repeatedly.
-- **4 → 5**: the model trains and serves. Where do you go when it breaks?
+- **4 → 5**: the model trains. Where do you go when it breaks?
 
 ## Backup slides (after the wrap-up)
 
@@ -79,6 +79,15 @@ Andrea's view is that the content is worth showing to this audience — many are
 comfortable with PyTorch and not with Slurm, and a browser lowers that barrier — but
 that option 3 is not one person's call to make.
 
+## Storage: one thing lands the morning of the session
+
+`datacache` — `/iopsstor/datacache/cscs/swissai/<project>` — goes live on **26 August**,
+after the maintenance. Module 2 has a slide on it, marked as new, and module 0's
+maintenance slide points forward to it so the outage has an upside.
+
+Confirm on the morning that it is actually available. If the maintenance slips, the
+module 2 slide says "from today" and would be wrong on stage.
+
 ## Closing
 
 End by pointing the audience at the **CSCS User Day, Friday 28 August 2026** — two
@@ -104,11 +113,13 @@ audience split runs through the whole session.
 
 Speaker notes on every slide. Outstanding before the session:
 
-- Two screenshots — see `assets/screenshots/TODO.md`.
-- Three `TODO(verify)` markers in `slides/01-project-access.md`: the portal consumption
-  view, the MLP small/large numbers, and every number on the linear-consumption slide.
-  The last two are the same root cause — the policies page is still a docs preview.
-- The Swiss AI call dates on slide 3 are time-sensitive. Re-check them the week before.
+- One screenshot, plus three optional ones — see `assets/screenshots/TODO.md`.
+- Five `TODO(verify)` markers in `slides/01-project-access.md`: the portal consumption
+  view, changing an existing member's role, the account identity and re-enabling, the
+  MLP small/large numbers, and every number on the linear-consumption slide. Two of the
+  five close on their own when the policies page is merged; the other three need somebody
+  to write a paragraph on `docs.cscs.ch`. All of them are in `notes/docs-gaps.md`.
+- The Swiss AI call dates on slide 2 are time-sensitive. Re-check them the week before.
 
 Module 1 also carries the small/large project explanation, which arguably belongs in
 module 0. If module 0's owner would rather cover it, module 1 drops slide 3 and gains

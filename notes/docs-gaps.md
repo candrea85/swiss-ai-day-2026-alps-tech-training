@@ -1,12 +1,12 @@
 # Documentation gaps found while writing this session
 
-Every gap below was hit while writing **module 1** and checking each claim against
+Every gap below was hit while writing this session and checking each claim against
 `docs.cscs.ch`. In each case the behaviour is known and correct, but nothing on the
 public documentation states it, so a slide asserting it cannot be reviewed by anyone
 except the person who already knew.
 
 The body of this file is written to be pasted into an issue on the documentation
-repository. Keep adding to it as modules 2 to 5 are written — the list will grow.
+repository. Keep adding to it as the remaining modules are finished — the list will grow.
 
 Source of the corrections: Andrea Ceriani, ML Platform service manager.
 Cross-referenced in `notes/sources.md`.
@@ -60,6 +60,16 @@ of the lifecycle. Both ends are missing.
       ends" and assume everything goes at once, including their data. One sentence on
       that page would prevent a recurring panic.
 
+## Storage — pending merge, plus one genuinely open question
+
+- [ ] `datacache` and the Ritom scratch exist only on the `/442` preview. Nothing to fix
+      here — a tracking entry, to be closed when the pages land and the module 2 links
+      are re-pointed.
+- [ ] **Ritom's cleanup policy "is being finalised".** This one is not just a merge:
+      until there is a number, nobody can plan a workflow on that filesystem, and the
+      slide has to say "being finalised" out loud. Worth closing before people start
+      using it and discover the policy afterwards.
+
 ## ML Platform policies — pending merge
 
 - [ ] The policies page is still only a preview at
@@ -77,5 +87,7 @@ of the lifecycle. Both ends are missing.
 The session is built on the rule that every technical claim must be traceable to
 `docs.cscs.ch`. Where that fails, the deck either says nothing — which leaves the
 audience without an answer they came for — or asserts something a reviewer cannot check.
-Module 1 currently carries five `TODO(verify)` markers, and four of them exist only
-because of the gaps above.
+The deck currently carries **16** `TODO(verify)` markers across seven files. Most of
+them exist only because of the gaps above, and most would close on their own the day the
+pending pages are merged. The ones that would not are the portal behaviours and the
+project lifecycle — those need somebody to write a paragraph.

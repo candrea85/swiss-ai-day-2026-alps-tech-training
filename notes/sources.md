@@ -1,5 +1,34 @@
 # Source material
 
+Everything the slides rest on that is **not** a live `docs.cscs.ch` page: documentation
+previews, material from other repositories, and things that are true but written down
+nowhere. Keep this file honest — if a claim in the slides comes from here rather than
+from the public documentation, it must say so at the point of use, as a `TODO(verify)`.
+
+## Storage documentation preview — `/442`
+
+<https://cscs-docs-preview.svc.cscs.ch/442> — the storage and ML Platform pages as they
+will be after the next merge. Module 2 is written from this, not from the live pages,
+because the live ones are missing two mount points.
+
+What is only here, and not yet on `docs.cscs.ch`:
+
+- **`datacache`** — `/iopsstor/datacache/cscs/swissai/<project>`. A project-level working
+  area on fast Iopsstor. "Like scratch, it is fast NVMe storage and is **not backed up**.
+  Unlike scratch, it has **no cleanup policy**: files are never deleted automatically, and
+  the project owns its data lifecycle and space hygiene within a project quota on capacity
+  and inodes." Not provisioned by default: the PI opens a Service Desk ticket with the use
+  case and the space and inodes required, and CSCS reviews it before creating the area.
+  **Goes live on 26 August 2026, after the maintenance** — the day of the session. That
+  timing is Andrea's, not the page's.
+- **Ritom scratch** — "On Clariden, a further scratch path is available on Ritom (a VAST
+  file system) at `/ritom/scratch/cscs/$USER`." Its cleanup policy "is being finalised",
+  which is why module 2 says so on the slide rather than inventing a number.
+- The scratch usage recommendations, and the instruction to move results to the project
+  store after a job "for example with `rclone` on the `xfer` queue".
+
+Re-point every module 2 link once this is merged, and re-check the numbers at that point.
+
 ## Not documented anywhere yet — Andrea, as ML Platform service manager
 
 These are load-bearing claims in module 1 that no public page currently backs. They are
@@ -72,10 +101,6 @@ The call dates are time-sensitive and live on swiss-ai.org, not on docs.cscs.ch 
 **re-check them the week before the session**. Detailed submission instructions sit in
 linked Google Drive documents that were not read.
 
-
-Material outside this repository that we are reusing, and what each piece is good for.
-Keep this file honest: if a claim in the slides came from here rather than from
-`docs.cscs.ch`, it must say so at the point of use.
 
 ## ML Platform drop-in repository
 

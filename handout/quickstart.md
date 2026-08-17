@@ -6,7 +6,7 @@ paginate: false
 
 # Alps quickstart — accounts, keys, access
 
-Alps technical training · Swiss AI Initiative Annual Meeting 2026 · Module 1 · every claim below is documented at **docs.cscs.ch**
+Alps technical training · Swiss AI Initiative Annual Meeting 2026 · Module 1 · start at **docs.cscs.ch**
 
 <div class="cols">
 <div>

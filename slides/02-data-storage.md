@@ -24,7 +24,7 @@ Ben has a shell and an empty home directory. Where do two terabytes of training 
 
 <!--
 START AT T+17:00. Check the presenter timer now.
-CUT IF LATE: Cut "Beyond the project". Long term and object storage become one spoken line.
+CUT IF LATE: Cut "Inodes run out before terabytes do". Say it in one line over the mount-point table.
 SAY:
 - Ben is in. He has a shell on Clariden and an empty home directory.
 - His first real question is where to put his data.
@@ -37,16 +37,18 @@ NEXT: There are four places, and they are not interchangeable.
 
 <div class="audience all">Everyone</div>
 
-# Four filesystems, four different jobs
+# Six mount points, and they are not interchangeable
 
 Putting data in the wrong one is the most common and most expensive mistake here.
 
-| | Path | For | Quota | Cleanup |
-|---|---|---|---|---|
-| **Home** | `/users/$USER` | code, scripts, config | **50 GB**, 500k inodes | none |
-| **Scratch** `iopsstor` | `/iopsstor/scratch/cscs/$USER` | training data, random I/O | — | **14 days** |
-| **Scratch** `capstor` | `/capstor/scratch/cscs/$USER` | checkpoints, large sequential I/O | 150 TB, 1M inodes | **30 days** |
-| **Project store** | `/capstor/store/cscs/swissai/<project>` | shared, medium term | per project | none |
+| | Path | For | Cleanup |
+|---|---|---|---|
+| **Home** | `/users/$USER` | code, scripts, config — 50 GB | none |
+| **Scratch** `iopsstor` | `/iopsstor/scratch/cscs/$USER` | training data, random I/O | **14 days** |
+| **Scratch** `capstor` | `/capstor/scratch/cscs/$USER` | checkpoints, sequential I/O | **30 days** |
+| **Scratch** `ritom` | `/ritom/scratch/cscs/$USER` — Clariden only | VAST file system | being finalised |
+| **Project store** | `/capstor/store/cscs/swissai/<project>` | shared, medium term, backed up | none |
+| **Project** `datacache` | `/iopsstor/datacache/cscs/swissai/<project>` | shared fast datasets — **on request** | none |
 
 <div class="accent">
 
@@ -57,10 +59,12 @@ Scratch is **not** storage. It is a workspace that deletes itself.
 <!--
 This is the slide of the module. Do not rush it.
 SAY:
-- Four places. Read the table left to right, do not read it out.
-- Home is small. 50 gigabytes. It is for code and configuration, nothing else.
-- Two scratch filesystems, and the difference between them is the next slide.
-- Project store is where things live for the length of the project.
+- Six mount points. Read the table, do not read it out loud.
+- Three groups. Home, scratch, and project.
+- Home is small. 50 gigabytes. Code and configuration, nothing else.
+- Three scratch filesystems. The difference between the first two is the next slide.
+- Ritom is newer, Clariden only, and its cleanup policy is still being finalised. Do not build a workflow on it yet.
+- Then two project areas: the store, which is backed up, and datacache, which is not and which you have to ask for.
 POINT AT THE CLEANUP COLUMN:
 - This is the column that hurts people.
 - Files not accessed for 14 days on iopsstor are deleted. 30 days on capstor.
@@ -239,16 +243,15 @@ cscs-docs-preview.svc.cscs.ch/442/storage/transfer/. Re-check once merged. -->
 
 # Project storage is what you asked for in the proposal
 
-<!-- PLACEHOLDER — module 2 owner: this is the PI-facing storage slide. Expand or cut. -->
+`/capstor/store/cscs/swissai/<project>` — the only durable place, and the only backed-up one.
 
 <div class="cols">
 <div>
 
-- Path: `/capstor/store/cscs/swissai/<project>`
 - Quota comes from the **initial resource request**
 - Small projects: **1 TB, 1M inodes** by default
 - Large projects: **no default** — you state it in the proposal
-- Backed up to tape; three most recent copies, every 24 hours
+- **Backed up** to tape: three most recent copies, every 24 hours
 - No cleanup policy
 
 </div>
@@ -276,8 +279,8 @@ SAY:
 - Small projects get a terabyte by default. Large projects get no default at all, you state it.
 - It is backed up to tape, three copies, every 24 hours. Scratch is not.
 - And at the end, three months, then it goes.
-- That last point connects back to module 1: this is why we ask for a data footprint up front.
-NEXT: Long term, and then where to read more.
+- That connects back to module 1: this is why we ask for a data footprint up front.
+NEXT: And from today there is a second project area, which is new.
 DOCS: docs.cscs.ch/storage/filesystems/
 -->
 
@@ -285,40 +288,65 @@ DOCS: docs.cscs.ch/storage/filesystems/
 
 <div class="audience all">Everyone</div>
 
-# Beyond the project: long term storage and object storage
+<span class="tag">New — from 26 August</span>
 
-<!-- PLACEHOLDER — module 2 owner: one line each, or cut this slide if short on time. -->
+# `datacache` is fast, shared, and does not disappear
 
-<div class="cols">
-<div class="card">
+Available from today, after the maintenance. It fills the gap between scratch and project store.
 
-### Long Term Storage
+<div class="cols-wide">
+<div>
 
-Preserve scientific data and make it publicly accessible through a **persistent identifier**.
+| | Fast? | Survives? | Shared by the project? |
+|---|---|---|---|
+| Scratch `iopsstor` | **yes** | no — 14 days | no, per user |
+| Project store | no — HDD | **yes** | **yes** |
+| **`datacache`** | **yes** | **yes** | **yes** |
 
-For data that has to outlive the project and be cited.
-
-</div>
-<div class="card">
-
-### Object Storage
-
-A public cloud object storage service, based on the **Ceph Object Gateway**.
-
-For data that has to be reachable over HTTP.
+`/iopsstor/datacache/cscs/swissai/<project>`
 
 </div>
+<div class="card">
+
+### How to get one
+
+It is **not** provisioned by default.
+
+Your **PI** opens a Service Desk ticket with the use case, and the space and inodes needed. CSCS reviews it before creating the area.
+
+</div>
+</div>
+
+<div class="accent">
+
+No cleanup **and** no backup. The project owns its own data hygiene.
+
 </div>
 
 <!--
-SAY:
-- Two services that are not filesystems, mentioned so you know they exist.
-- Long Term Storage is for data that must outlive the project and be citable. It gives you a persistent identifier.
-- Object storage is Ceph behind an S3-style gateway, for data you need to reach over HTTP.
-- Neither is something you set up in the last week of a project. Plan them.
+This is new. Nobody in the room has used it. Spend a moment.
+SAY, start from the problem it solves:
+- Until today you had two bad options for a dataset the whole team reads.
+- Put it on scratch: fast, but it is per user, and it is deleted after 14 days.
+- Put it on project store: shared and durable, but that is spinning disk, so random reads are slow.
+- So teams kept a copy each, on scratch, and re-staged it every two weeks.
+- datacache is the third option. Fast NVMe, shared across the project, and never cleaned automatically.
+- One copy of the dataset. The whole project reads it. It is still there next month.
+POINT AT THE RED BAR:
+- Two warnings. It is not backed up, like scratch. And nothing is deleted for you.
+- Within your quota on capacity and inodes, the project owns its own space hygiene. That is a real responsibility.
+HOW TO GET IT:
+- It is not created by default. Your PI opens a Service Desk ticket saying what it is for and how much space and how many inodes.
+- We review it before creating the area.
 NEXT: Where to read more.
-DOCS: docs.cscs.ch/storage/longterm/ · docs.cscs.ch/storage/object/
+DOCS: docs.cscs.ch/platforms/mlp/
 -->
+
+<!-- TODO(verify): datacache is documented only on the preview at
+cscs-docs-preview.svc.cscs.ch/442/platforms/mlp/ and goes live on 26 August after the
+maintenance. Confirm on the morning of the session that it is actually available — if
+the maintenance slips, this slide says "from today" and would be wrong on stage.
+Re-point the DOCS line once the page is merged. -->
 
 ---
 
@@ -339,7 +367,7 @@ DOCS: docs.cscs.ch/storage/longterm/ · docs.cscs.ch/storage/object/
 
 ### Platform specifics
 
-- **ML Platform storage policies** — docs.cscs.ch/platforms/mlp/
+- **ML Platform storage, incl. `datacache`** — docs.cscs.ch/platforms/mlp/
 
 </div>
 <div class="card dark">
@@ -348,7 +376,7 @@ DOCS: docs.cscs.ch/storage/longterm/ · docs.cscs.ch/storage/object/
 
 - **Home** is for code. 50 GB.
 - **Scratch** deletes itself. 14 or 30 days.
-- **Project store** is the only durable place.
+- **Project** areas do not. Store is backed up, `datacache` is not.
 
 ### And one habit
 
@@ -360,7 +388,8 @@ After every job, move the results off scratch.
 <!--
 Do not read this slide out loud.
 SAY only:
-- Three rules. Home is for code. Scratch deletes itself. Project store is the durable one.
+- Three rules. Home is for code. Scratch deletes itself. The project areas do not.
+- Of the two project areas, only the store is backed up.
 - And the habit: after every job, move results off scratch.
 NEXT: hand over to module 3. Ben knows where his data goes. Now he needs software that can read it.
 -->
