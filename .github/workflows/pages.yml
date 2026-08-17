@@ -1,0 +1,61 @@
+name: Build and publish the deck
+
+# Publishes the built slides, handout and run sheet to GitHub Pages so the draft can be
+# reviewed in a browser without cloning and building. build/ stays git-ignored: the
+# artefacts are produced here, never committed.
+#
+# One-time setup in the repository: Settings → Pages → Build and deployment →
+# Source: GitHub Actions. Until that is done this workflow builds but cannot deploy.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Let a running deployment finish rather than cancelling it mid-publish.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # Marp renders through a headless browser. The GitHub runner image ships Chrome;
+      # point Marp at it explicitly rather than relying on auto-detection.
+      - name: Locate Chrome
+        run: echo "CHROME_PATH=$(which google-chrome || which chromium-browser)" >> "$GITHUB_ENV"
+
+      - name: Build slides, handout and run sheet
+        run: make all handout runsheet
+
+      - name: Add the landing page
+        run: cp web/index.html build/index.html
+
+      - name: Report the timing budget
+        run: make check
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: build
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

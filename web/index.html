@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alps technical training — Swiss AI Initiative Annual Meeting 2026</title>
+<style>
+  :root {
+    --cscs-red: #D61F26;
+    --text: #1A1A1A;
+    --muted: #666666;
+    --bg: #FFFFFF;
+    --panel: #F7F7F8;
+    --border: #E5E5E5;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 48px 24px 72px;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.6;
+  }
+  main { max-width: 720px; margin: 0 auto; }
+  h1 { font-size: 30px; line-height: 1.2; margin: 0 0 6px; }
+  .sub { color: var(--muted); margin: 0 0 32px; }
+  .draft {
+    border-left: 4px solid var(--cscs-red);
+    background: #F3E0E1;
+    color: #8E1318;
+    border-radius: 0 8px 8px 0;
+    padding: 16px 20px;
+    margin: 0 0 32px;
+    font-size: 15px;
+  }
+  .draft strong { display: block; margin-bottom: 4px; font-size: 16px; }
+  a.card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 22px;
+    margin-bottom: 12px;
+  }
+  a.card:hover { border-color: var(--cscs-red); }
+  a.card .t { font-weight: 600; font-size: 17px; }
+  a.card .d { color: var(--muted); font-size: 14px; }
+  footer { margin-top: 40px; font-size: 14px; color: var(--muted); }
+  footer a { color: var(--cscs-red); }
+  code { background: var(--panel); border: 1px solid var(--border); border-radius: 4px; padding: 1px 5px; font-size: 13px; }
+  @media (prefers-color-scheme: dark) {
+    :root { --text: #EDEDED; --muted: #9A9A9A; --bg: #141414; --panel: #1E1E1E; --border: #2C2C2C; }
+    .draft { background: #2A1416; color: #F0B4B7; }
+  }
+</style>
+</head>
+<body>
+<main>
+
+  <h1>Alps technical training</h1>
+  <p class="sub">Swiss AI Initiative Annual Meeting · Wednesday 26 August 2026 · Bern</p>
+
+  <div class="draft">
+    <strong>Work in progress — draft</strong>
+    This session has not happened yet. Most modules are scaffolding, several claims are
+    still being verified, and some figures come from documentation that has not been
+    published yet. Do not cite anything here as CSCS guidance —
+    <a href="https://docs.cscs.ch">docs.cscs.ch</a> is the authority.
+  </div>
+
+  <a class="card" href="deck.html">
+    <div class="t">Open the slides →</div>
+    <div class="d">Press <code>p</code> for presenter view: speaker notes, next slide and a timer.</div>
+  </a>
+
+  <a class="card" href="deck.pdf">
+    <div class="t">Slides as PDF →</div>
+    <div class="d">Speaker notes attached as annotations.</div>
+  </a>
+
+  <a class="card" href="quickstart.pdf">
+    <div class="t">Handout — Alps quickstart →</div>
+    <div class="d">One printable page: accounts, keys, SSH config, budget rules.</div>
+  </a>
+
+  <a class="card" href="run-sheet.pdf">
+    <div class="t">Run sheet →</div>
+    <div class="d">When each module starts, and what it drops if the clock slips.</div>
+  </a>
+
+  <footer>
+    Source, module ownership and open questions:
+    <a href="https://github.com/candrea85/swiss-ai-day-2026-alps-tech-training">github.com/candrea85/swiss-ai-day-2026-alps-tech-training</a>
+  </footer>
+
+</main>
+</body>
+</html>
