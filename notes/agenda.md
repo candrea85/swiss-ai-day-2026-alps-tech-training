@@ -88,6 +88,26 @@ maintenance slide points forward to it so the outage has an upside.
 Confirm on the morning that it is actually available. If the maintenance slips, the
 module 2 slide says "from today" and would be wrong on stage.
 
+## Before the session: two documentation merges
+
+This is the deck's biggest external dependency, and it is not in our hands.
+
+| Preview | Covers | Slides that depend on it |
+|---|---|---|
+| `/463/platforms/mlp/policies/` | small vs large, expected/minimal consumption, the 15–50% grace, the `low` cap, the 90-day grace | module 1, slides 2 and 7 |
+| `/442` storage and MLP pages | `datacache`, the Ritom scratch, cleanup and backup policies, the transfer figures | module 2, most of it |
+
+Two different failure modes, and the second is the nastier one:
+
+- `docs.cscs.ch/platforms/mlp/policies/` currently **404s**. The slide that used to print
+  it now prints the parent page instead. Upgrade it once the merge lands.
+- The storage URLs **already resolve** — but the live pages do not yet mention
+  `datacache` or Ritom. So a slide can cite a working link whose content does not back
+  what was just said. That is worse than a dead link, because it looks like we are wrong.
+
+Check both the morning of the session. If the storage merge has not happened, say so on
+the slide rather than letting somebody discover it afterwards.
+
 ## Closing
 
 End by pointing the audience at the **CSCS User Day, Friday 28 August 2026** — two

@@ -30,7 +30,7 @@ NEXT: The two ways.
 -->
 
 ---
-
+<!-- _footer: 'Alps technical training · Swiss AI Initiative Annual Meeting 2026 · docs.cscs.ch/software/uenv/' -->
 <div class="audience all">Everyone</div>
 
 # Two ways to get software, and they are not rivals
@@ -74,7 +74,7 @@ DOCS: docs.cscs.ch/software/uenv/ · docs.cscs.ch/software/container-engine/
 -->
 
 ---
-
+<!-- _footer: 'Alps technical training · Swiss AI Initiative Annual Meeting 2026 · docs.cscs.ch/software/uenv/' -->
 <div class="audience all">Everyone</div>
 
 # A uenv is three commands
@@ -121,7 +121,7 @@ owner: replace the image name above with one you have actually pulled on Claride
 confirm the PyTorch uenv names and versions against docs.cscs.ch/software/ml/pytorch/. -->
 
 ---
-
+<!-- _footer: 'Alps technical training · Swiss AI Initiative Annual Meeting 2026 · docs.cscs.ch/software/container-engine/' -->
 <div class="audience all">Everyone</div>
 
 # A container is described by one small file
@@ -167,7 +167,7 @@ DOCS: docs.cscs.ch/software/container-engine/
 -->
 
 ---
-
+<!-- _footer: 'Alps technical training · Swiss AI Initiative Annual Meeting 2026 · docs.cscs.ch/software/ml/pytorch/' -->
 <div class="audience all">Everyone</div>
 
 # A real PyTorch EDF, annotated
@@ -237,7 +237,7 @@ DOCS: docs.cscs.ch/software/ml/pytorch/
 -->
 
 ---
-
+<!-- _footer: 'Alps technical training · Swiss AI Initiative Annual Meeting 2026 · docs.cscs.ch/software/ml/pytorch/' -->
 <div class="audience all">Everyone</div>
 
 # Where images come from
@@ -296,7 +296,6 @@ owner: find it, quote it verbatim, and put it on this slide. Without a real comm
 slide is advice, not instruction. -->
 
 ---
-
 <div class="audience all">Everyone</div>
 
 # Four ways to make this slow
@@ -336,7 +335,6 @@ NEXT: Where to read more.
 -->
 
 ---
-
 <!-- _class: ref -->
 
 # Where to read more

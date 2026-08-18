@@ -34,7 +34,7 @@ NEXT: There are four places, and they are not interchangeable.
 -->
 
 ---
-
+<!-- _footer: 'Alps technical training · Swiss AI Initiative Annual Meeting 2026 · docs.cscs.ch/storage/filesystems/' -->
 <div class="audience all">Everyone</div>
 
 # Six mount points, and they are not interchangeable
@@ -46,7 +46,7 @@ Putting data in the wrong one is the most common and most expensive mistake here
 | **Home** | `/users/$USER` | code, scripts, config — 50 GB | none |
 | **Scratch** `iopsstor` | `/iopsstor/scratch/cscs/$USER` | training data, random I/O | **14 days** |
 | **Scratch** `capstor` | `/capstor/scratch/cscs/$USER` | checkpoints, sequential I/O | **30 days** |
-| **Scratch** `ritom` | `/ritom/scratch/cscs/$USER` — Clariden only | VAST file system | being finalised |
+| **Scratch** `ritom` | `/ritom/scratch/cscs/$USER` | VAST — a third scratch | **being finalised** |
 | **Project store** | `/capstor/store/cscs/swissai/<project>` | shared, medium term, backed up | none |
 | **Project** `datacache` | `/iopsstor/datacache/cscs/swissai/<project>` | shared fast datasets — **on request** | none |
 
@@ -69,6 +69,10 @@ GIVE THEM THE MODEL FIRST. Two words, two properties:
 - Scratch is yours. Per user. Not backed up.
 - Store belongs to the project. Shared. Backed up.
 - Everything else on this slide hangs off those two.
+HOME SITS BETWEEN THEM, if anyone asks:
+- No cleanup, and there are daily snapshots of the last seven days in $HOME/.snapshot.
+- That has saved people who deleted their own code. Worth knowing it exists.
+- Tape backups for Home are being implemented, so do not promise them yet.
 THEN POINT AT THE CLEANUP COLUMN:
 - This is the column that hurts people.
 - Say the mechanism precisely, because it is not what they assume.
@@ -81,13 +85,29 @@ NEXT: So which scratch, for what?
 DOCS: docs.cscs.ch/storage/filesystems/ · docs.cscs.ch/platforms/mlp/
 -->
 
-<!-- TODO(verify): quotas and cleanup windows come from the storage documentation that is
-still a preview at cscs-docs-preview.svc.cscs.ch/442/storage/filesystems/ and from
-docs.cscs.ch/platforms/mlp/. The iopsstor quota is not stated on either — find it or
-drop the column entry. Re-check every number once the preview is merged. -->
+<!-- Verified against cscs-docs-preview.svc.cscs.ch/442, both /storage/filesystems/ and
+/platforms/mlp/, quoting them directly:
+  home     "There is no cleanup policy on Home"; 50 GB and 500,000 inodes; daily
+           snapshots of the last seven days in $HOME/.snapshot; tape backups "currently
+           being implemented"; retained three months after your last project finishes.
+  iopsstor "Files ... that have not been accessed in 14 days are automatically deleted."
+  capstor  "Files ... that have not been accessed in 30 days are automatically deleted."
+           150 TB, 1 million inodes, soft quota with a two-week grace period.
+           "There are no backups on Scratch."
+  store    "There is no cleanup policy on Store"; "the three most recent copies of every
+           file backed up to tape every 24 hours"; quota from the initial resource
+           request; retained three months after the project ends.
+  ritom    cleanup "is being finalised". Nothing else stated.
+Note the criterion is LAST ACCESS, not age or modification time.
+
+TODO(verify): two things the preview does not settle.
+ 1. The iopsstor scratch quota is not stated anywhere. Find it, or leave it off.
+ 2. The preview labels ritom "(Clariden only)" and says "On Clariden, the cleanup policy
+    ... is being finalised". Andrea says it is NOT mounted only on Clariden, so the slide
+    drops that qualifier. This is a documentation error, not a gap — fix the page. -->
 
 ---
-
+<!-- _footer: 'Alps technical training · Swiss AI Initiative Annual Meeting 2026 · docs.cscs.ch/platforms/mlp/' -->
 <div class="audience all">Everyone</div>
 
 # NVMe for reading data, HDD for writing checkpoints
@@ -140,49 +160,64 @@ DOCS: docs.cscs.ch/platforms/mlp/ (Scratch Usage Recommendations)
 -->
 
 ---
-
+<!-- _footer: 'Alps technical training · Swiss AI Initiative Annual Meeting 2026 · docs.cscs.ch/guides/storage/' -->
 <div class="audience all">Everyone</div>
 
 # Inodes run out before terabytes do
 
-<!-- PLACEHOLDER — module 2 owner: this slide needs your real numbers and a real example. -->
+A quota has two numbers, and people only remember one.
 
-<div class="cols-narrow">
+<div class="cols">
 <div>
 
-- Home is **50 GB** but also **500,000 inodes**
+- Home is **50 GB** — and **500,000 inodes**
 - One inode is roughly one file
-- A dataset of a million small files fails on **count**, not on size
-- Check before you fill it, not after
+- **One PyTorch virtual environment is about 22,800 inodes**
+- So about twenty of those and Home is full, on a metric nobody was watching
 
 </div>
-<div class="shot">
+<div class="card">
 
-**SCREENSHOT / TERMINAL CAPTURE**
+### The fix, and it is the same one as module 3
 
-The quota-checking command and its output.
-See `docs.cscs.ch/storage/filesystems/` → "Checking quota".
+> "Lustre is not well suited to handling many small files."
+
+Squash the environment into a **single squashfs image**. One file instead of twenty-two thousand.
+
+That is exactly what a **uenv** already is.
 
 </div>
+</div>
+
+<div class="accent">
+
+Millions of small training files hurt the metadata servers, not just your quota.
+
 </div>
 
 <!--
 SAY:
-- A quota has two numbers, and people only remember one.
+- A quota has two numbers and people only remember the gigabytes.
 - Space, and inodes. An inode is roughly a file.
-- Home gives you 50 gigabytes and 500,000 files.
-- If your dataset is a million tiny images, you hit the file limit long before the size limit.
-- That is also an argument for packed dataset formats, but that is module 3's problem.
+- Home gives you 50 gigabytes and five hundred thousand files.
+- Now the number that surprises everyone: one PyTorch virtual environment is about
+  twenty-two thousand eight hundred inodes.
+- So roughly twenty environments and your home directory is full — not on size, on file count.
+- The documentation is blunt about why: Lustre is not well suited to handling many small files.
+- The fix is on the right, and it is the same trick module 3 will show you.
+- Squash the whole environment into one squashfs image. One file, not twenty-two thousand.
+- That is literally what a uenv is. Module 3 picks this up.
 NEXT: Now get the data in.
-DOCS: docs.cscs.ch/storage/filesystems/
+DOCS: docs.cscs.ch/guides/storage/ · docs.cscs.ch/storage/filesystems/
 -->
 
-<!-- TODO(verify): the exact quota-checking command is in the "Checking quota" section of
-the storage docs and was not captured here. Module 2 owner: quote it verbatim, and
-replace the placeholder with a real terminal capture. -->
+<!-- TODO(verify): the quota-checking command is in the "Checking quota" section of the
+storage docs and was never captured here. Module 2 owner: quote it verbatim and put it
+on this slide or say it out loud. The 22,800-inode figure and the Lustre quotation come
+from cscs-docs-preview.svc.cscs.ch/442/guides/storage/. -->
 
 ---
-
+<!-- _footer: 'Alps technical training · Swiss AI Initiative Annual Meeting 2026 · docs.cscs.ch/storage/transfer/' -->
 <div class="audience all">Everyone</div>
 
 # Moving data in: Globus from outside, `xfer` from inside
@@ -221,9 +256,9 @@ For a directory with many files, or a few very large checkpoints, `rclone` copie
 `rclone copy --transfers=16 --checkers=32 --progress`
 
 **Large files**
-`rclone copy --multi-thread-streams=4 --multi-thread-cutoff=256M --transfers=4`
+`rclone copy --multi-thread-streams=4 --multi-thread-cutoff=256M --transfers=4 --progress`
 
-Roughly **3 GB/s** in practice.
+**1 TB in about 5 minutes** — roughly 3 GB/s.
 
 </div>
 </div>
@@ -235,7 +270,10 @@ SAY:
 - Between CSCS filesystems, use the xfer partition. It is a Slurm partition dedicated to this.
 - The point of xfer is that you are not doing it on a login node, where you would be hurting everybody else.
 - On the right, the thing people do not know: rclone is often much faster than rsync, because it works in parallel.
-- Two flag sets, one for many small files, one for a few big ones. About three gigabytes per second.
+- Two flag sets, one for many small files, one for a few big ones.
+- Give them the concrete number: a one terabyte directory from store to scratch takes about five minutes. Roughly three gigabytes a second.
+- Start with those values and raise the parallelism gradually, watching the effect on the metadata servers.
+- If you need to chain transfers, xfer jobs take --dependency=afterok like any other Slurm job.
 NEXT: What about data that has to outlive the project?
 DOCS: docs.cscs.ch/storage/transfer/
 -->
@@ -244,7 +282,7 @@ DOCS: docs.cscs.ch/storage/transfer/
 cscs-docs-preview.svc.cscs.ch/442/storage/transfer/. Re-check once merged. -->
 
 ---
-
+<!-- _footer: 'Alps technical training · Swiss AI Initiative Annual Meeting 2026 · docs.cscs.ch/storage/filesystems/' -->
 <div class="audience">PIs and deputies</div>
 
 # Project storage is what you asked for in the proposal
@@ -291,7 +329,7 @@ DOCS: docs.cscs.ch/storage/filesystems/
 -->
 
 ---
-
+<!-- _footer: 'Alps technical training · Swiss AI Initiative Annual Meeting 2026 · docs.cscs.ch/platforms/mlp/' -->
 <div class="audience all">Everyone</div>
 
 <span class="tag">New — from 26 August</span>
@@ -306,7 +344,7 @@ Available from today, after the maintenance. It fills the gap between scratch an
 | | Fast? | Survives? | Shared by the project? |
 |---|---|---|---|
 | Scratch `iopsstor` | **yes** | no — 14 days | no, per user |
-| Project store | no — HDD | **yes** | **yes** |
+| Project store | medium | **yes** | **yes** |
 | **`datacache`** | **yes** | **yes** | **yes** |
 
 `/iopsstor/datacache/cscs/swissai/<project>`
@@ -334,7 +372,7 @@ This is new. Nobody in the room has used it. Spend a moment.
 SAY, start from the problem it solves:
 - Until today you had two bad options for a dataset the whole team reads.
 - Put it on scratch: fast, but it is per user, and it is deleted after 14 days.
-- Put it on project store: shared and durable, but that is spinning disk, so random reads are slow.
+- Put it on project store: shared and durable, but it is medium-performance, so random reads are slow.
 - So teams kept a copy each, on scratch, and re-staged it every two weeks.
 - datacache is the third option. Fast NVMe, shared across the project, and never cleaned automatically.
 - One copy of the dataset. The whole project reads it. It is still there next month.
@@ -357,7 +395,6 @@ the maintenance slips, this slide says "from today" and would be wrong on stage.
 Re-point the DOCS line once the page is merged. -->
 
 ---
-
 <!-- _class: ref -->
 
 # Where to read more
@@ -370,6 +407,7 @@ Re-point the DOCS line once the page is merged. -->
 - **Overview** — docs.cscs.ch/storage/
 - **File systems and quotas** — docs.cscs.ch/storage/filesystems/
 - **Data transfer** — docs.cscs.ch/storage/transfer/
+- **Storage guide** — docs.cscs.ch/guides/storage/
 - **Long term storage** — docs.cscs.ch/storage/longterm/
 - **Object storage** — docs.cscs.ch/storage/object/
 
@@ -382,9 +420,9 @@ Re-point the DOCS line once the page is merged. -->
 
 ### The three rules
 
-- **Home** is for code. 50 GB.
-- **Scratch** deletes itself. 14 or 30 days.
-- **Project** areas do not. Store is backed up, `datacache` is not.
+- **Home** is for code. 50 GB, 500k inodes.
+- **Scratch** is yours. Not backed up. Cleaned after 14 or 30 days.
+- **Project** areas are shared. Store is backed up, `datacache` is not.
 
 ### And one habit
 
@@ -396,7 +434,7 @@ After every job, move the results off scratch.
 <!--
 Do not read this slide out loud.
 SAY only:
-- Three rules. Home is for code. Scratch deletes itself. The project areas do not.
+- Three rules. Home is for code. Scratch is yours and gets cleaned. The project areas are shared and do not.
 - Of the two project areas, only the store is backed up.
 - And the habit: after every job, move results off scratch.
 NEXT: hand over to module 3. Ben knows where his data goes. Now he needs software that can read it.

@@ -32,7 +32,6 @@ Only put this up if somebody asks. Then jump straight to the block they asked fo
 -->
 
 ---
-
 <!-- _class: divider -->
 
 <span class="tag">Backup · ~5 min</span>
@@ -49,7 +48,7 @@ NEXT: Why it exists.
 -->
 
 ---
-
+<!-- _footer: 'Alps technical training · Swiss AI Initiative Annual Meeting 2026 · docs.cscs.ch/access/firecrest/' -->
 <div class="audience all">Everyone</div>
 
 # Not everything needs a terminal
@@ -88,7 +87,7 @@ DOCS: docs.cscs.ch/access/firecrest/
 -->
 
 ---
-
+<!-- _footer: 'Alps technical training · Swiss AI Initiative Annual Meeting 2026 · docs.cscs.ch/access/firecrest/' -->
 <div class="audience all">Everyone</div>
 
 # Built on FirecREST, so it needs nothing on the cluster
@@ -129,7 +128,6 @@ DOCS: docs.cscs.ch/access/firecrest/
 -->
 
 ---
-
 <div class="audience all">Everyone</div>
 
 # Four things it does well
@@ -181,7 +179,6 @@ presents this should pull two of them in — the dashboard and the job detail wi
 shareable URL — rather than showing this as a bullet list. -->
 
 ---
-
 <!-- _class: ref -->
 
 # The HPC Console — where to read more
@@ -220,7 +217,6 @@ NEXT: back to the discussion.
 -->
 
 ---
-
 <!-- _class: divider -->
 
 <span class="tag">Backup</span>

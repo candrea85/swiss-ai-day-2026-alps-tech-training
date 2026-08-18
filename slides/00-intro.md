@@ -32,7 +32,6 @@ NEXT: First, what is the machine you are all using?
 -->
 
 ---
-
 <div class="audience all">Everyone</div>
 
 # Today is a maintenance day
@@ -83,7 +82,7 @@ down at the same time, or at all. If only some are affected, name them here rath
 saying "systems". If the maintenance moves, this slide comes out. -->
 
 ---
-
+<!-- _footer: 'Alps technical training · Swiss AI Initiative Annual Meeting 2026 · docs.cscs.ch/alps/' -->
 <div class="audience all">Everyone</div>
 
 # Alps is one machine with many faces
@@ -131,7 +130,7 @@ DOCS: docs.cscs.ch/alps/
 -->
 
 ---
-
+<!-- _footer: 'Alps technical training · Swiss AI Initiative Annual Meeting 2026 · docs.cscs.ch/platforms/mlp/' -->
 <div class="audience all">Everyone</div>
 
 # Two clusters, and they are not interchangeable
@@ -177,7 +176,6 @@ DOCS: docs.cscs.ch/platforms/mlp/ · /clusters/clariden/ · /clusters/bristen/
 -->
 
 ---
-
 <div class="audience all">Everyone</div>
 
 # One project, from nothing to a trained model
@@ -221,7 +219,6 @@ NEXT: Module 1. How do you get a project at all?
 -->
 
 ---
-
 <!-- _class: ref -->
 
 # Where to read more

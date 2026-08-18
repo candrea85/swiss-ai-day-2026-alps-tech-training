@@ -65,6 +65,12 @@ of the lifecycle. Both ends are missing.
 - [ ] `datacache` and the Ritom scratch exist only on the `/442` preview. Nothing to fix
       here — a tracking entry, to be closed when the pages land and the module 2 links
       are re-pointed.
+- [ ] **Ritom is documented as Clariden-only, and it is not.** The preview's table says
+      `/ritom/scratch/cscs/$USER` "(Clariden only)" and the prose says "On Clariden, the
+      cleanup policy ... is being finalised". Per Andrea it is mounted more widely than
+      that. This is wrong information rather than missing information, so it matters
+      more: someone will plan around a filesystem they think they do not have.
+
 - [ ] **Ritom's cleanup policy "is being finalised".** This one is not just a merge:
       until there is a number, nobody can plan a workflow on that filesystem, and the
       slide has to say "being finalised" out loud. Worth closing before people start

@@ -39,7 +39,7 @@ NEXT: Start at the beginning. How do you get a project at all?
 -->
 
 ---
-
+<!-- _footer: 'Alps technical training · Swiss AI Initiative Annual Meeting 2026 · docs.cscs.ch/platforms/mlp/' -->
 <div class="audience">PIs and deputies</div>
 
 # Small and large are two different processes
@@ -109,7 +109,7 @@ re-check the numbers at that point. The call dates come from swiss-ai.org, not f
 CSCS — re-check them the week before, they change per call. -->
 
 ---
-
+<!-- _footer: 'Alps technical training · Swiss AI Initiative Annual Meeting 2026 · docs.cscs.ch/accounts/' -->
 <div class="audience all">Everyone</div>
 
 # Your account lives as long as one project does
@@ -175,7 +175,7 @@ rather than creating a new one. Both come from Andrea as ML Platform service man
 Confirm, then get them written into the docs page. -->
 
 ---
-
+<!-- _footer: 'Alps technical training · Swiss AI Initiative Annual Meeting 2026 · docs.cscs.ch/accounts/' -->
 <div class="audience">PIs and deputies</div>
 
 # The portal is where the project lives
@@ -221,7 +221,7 @@ DOCS: docs.cscs.ch/accounts/ (portal section)
 -->
 
 ---
-
+<!-- _footer: 'Alps technical training · Swiss AI Initiative Annual Meeting 2026 · docs.cscs.ch/accounts/' -->
 <div class="audience">PIs and deputies</div>
 
 # Adding Ben takes one email address
@@ -278,7 +278,7 @@ the Team tab. Click it in the portal, then either put one line on this slide or 
 into the docs page. Until then the slide claims nothing either way. -->
 
 ---
-
+<!-- _footer: 'Alps technical training · Swiss AI Initiative Annual Meeting 2026 · docs.cscs.ch/accounts/' -->
 <div class="audience all">Everyone</div>
 
 # Check the consumption monthly, not in the last week
@@ -334,7 +334,7 @@ tab name when capturing the screenshot, and consider getting this written into t
 docs page. -->
 
 ---
-
+<!-- _footer: 'Alps technical training · Swiss AI Initiative Annual Meeting 2026 · docs.cscs.ch/platforms/mlp/' -->
 <div class="audience">PIs and deputies</div>
 
 # Spend it linearly, or you lose it
@@ -397,7 +397,7 @@ Every project gets a credit in GPU hours, spent as your jobs run. Each month has
 <div class="accent">
 
 Out of credit before the end? The `low` partition, capped at two months of your budget.
-All the rules: **docs.cscs.ch/platforms/mlp/policies/**
+All the rules: **docs.cscs.ch/platforms/mlp/**
 
 </div>
 
@@ -444,7 +444,7 @@ stays active comes from Andrea, not from the page. It is the distinction the tim
 makes, so it is worth getting written down — see notes/docs-gaps.md. -->
 
 ---
-
+<!-- _footer: 'Alps technical training · Swiss AI Initiative Annual Meeting 2026 · docs.cscs.ch/accounts/account-create/' -->
 <div class="audience all">Everyone</div>
 
 # No MFA means no SSH. There is no way around it
@@ -496,7 +496,7 @@ DOCS: docs.cscs.ch/accounts/account-create/ · docs.cscs.ch/access/mfa/
 -->
 
 ---
-
+<!-- _footer: 'Alps technical training · Swiss AI Initiative Annual Meeting 2026 · docs.cscs.ch/access/ssh/' -->
 <div class="audience all">Everyone</div>
 
 # Signed keys expire after one day
@@ -545,7 +545,7 @@ DOCS: docs.cscs.ch/access/ssh/
 -->
 
 ---
-
+<!-- _footer: 'Alps technical training · Swiss AI Initiative Annual Meeting 2026 · docs.cscs.ch/access/ssh/' -->
 <div class="audience all">Everyone</div>
 
 # Everything goes through ela.cscs.ch
@@ -618,7 +618,6 @@ DOCS: docs.cscs.ch/access/ssh/ · /clusters/clariden/ · /clusters/bristen/
 -->
 
 ---
-
 # What this module deliberately skipped
 
 <div class="cols">
@@ -659,7 +658,6 @@ NEXT, hand over to module 2:
 -->
 
 ---
-
 <!-- _class: ref -->
 
 # Where to read more

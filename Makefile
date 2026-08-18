@@ -31,7 +31,7 @@ MARP_FLAGS  := --allow-local-files --html --theme $(THEME)
 SLIDES      := $(sort $(wildcard slides/[0-9]*.md))
 DECK        := $(BUILD)/deck.md
 
-.PHONY: all pptx html pdf handout module serve clean check runsheet
+.PHONY: all pptx html pdf handout module serve clean check runsheet footers
 
 all: pptx html pdf
 
@@ -76,6 +76,12 @@ serve: $(DECK) $(THEME)
 
 check:
 	@python3 tools/slide-count.py $(SLIDES)
+	@python3 tools/sync-footers.py --check $(SLIDES)
+
+# Each slide's footer carries the docs page it came from, derived from its DOCS: line.
+# Edit the DOCS line in the speaker notes, then run this — never edit a footer by hand.
+footers:
+	@python3 tools/sync-footers.py $(SLIDES)
 
 # Who speaks when, and what each module drops if the clock slips. Budgets are read from
 # the module dividers, so this cannot drift from what is on screen.

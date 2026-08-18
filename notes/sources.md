@@ -29,6 +29,41 @@ What is only here, and not yet on `docs.cscs.ch`:
 
 Re-point every module 2 link once this is merged, and re-check the numbers at that point.
 
+### Full scan of the storage section, for whoever owns module 2
+
+Four pages under `/storage/`, plus one guide outside it. Verified quotations:
+
+- **`/storage/filesystems/`** — Home: "There is no cleanup policy on Home", 50 GB and
+  500,000 inodes, "Daily snapshots for the last seven days ... in `$HOME/.snapshot`",
+  and "Backups to tape storage are currently **being implemented** for Home directories"
+  — so do not promise them. Capstor scratch: 150 TB, 1 million inodes, "a soft quota
+  grace period of two weeks", files "not accessed in 30 days" deleted. Iopsstor scratch:
+  files "not accessed in 14 days" deleted; **its quota is not stated anywhere**. Store:
+  no cleanup, "the three most recent copies of every file backed up to tape every 24
+  hours", retained three months after the project ends. The deletion criterion is **last
+  access**, not age or modification.
+- **`/storage/transfer/`** — Globus mount points are listed as `/iopsstor/scratch/cscs`,
+  `/capstor/scratch/cscs`, **`/ritom/scratch/cscs`**, `/capstor/store/cscs` and
+  `/vast/users/cscs`. Note ritom appears here with no Clariden qualifier, which supports
+  Andrea's correction. Concrete figure: "copying a 1 TB directory from `/capstor/store`
+  to `/iopsstor/scratch` ... takes on the order of 5 minutes on Alps (roughly 3 GB/s)".
+  `xfer` jobs chain with `--dependency=afterok:$SLURM_JOB_ID`.
+- **`/guides/storage/`** — the page module 2 most needs and the one easiest to miss,
+  because it sits outside the storage section. Lustre striping
+  (`lfs setstripe --stripe-count 32 --stripe-size 4M`, 4 MB block size "gives good
+  throughput"), VAST/ROMIO tuning for Ritom, and "Lustre is not well suited to handling
+  many small files" — demonstrated with a PyTorch virtual environment of **22,806
+  inodes**, with the recommendation to squash it into a squashfs image. That example is
+  now on the module 2 inodes slide and hands off to module 3.
+- **`/storage/longterm/`** — not on a slide, the long-term-storage slide was cut. Kept
+  here because the numbers are concrete and a PI may ask: `lts.cscs.ch`, 10-year
+  retention, persistent identifiers, "2 TB of LTS storage quota (for 10 years) free of
+  charge per project" for User Lab, then "CHF 600.- for each terabyte (for 10 years)".
+  The PI grants LTS permissions to team members through the portal.
+- **`/storage/object/`** — also not on a slide. Ceph Object Gateway, S3-compatible, at
+  `https://rgw.cscs.ch`. Works with the AWS CLI, s3cmd and Cyberduck; quota via the
+  `/_quota` endpoint.
+
 ## Not documented anywhere yet — Andrea, as ML Platform service manager
 
 These are load-bearing claims in module 1 that no public page currently backs. They are

@@ -32,7 +32,7 @@ NEXT: Slurm, and the one flag that decides who pays.
 -->
 
 ---
-
+<!-- _footer: 'Alps technical training · Swiss AI Initiative Annual Meeting 2026 · docs.cscs.ch/running/slurm/' -->
 <div class="audience all">Everyone</div>
 
 # Every job is charged to a project
@@ -85,7 +85,7 @@ docs.cscs.ch/running/slurm/ for the ML Platform specifically — the partitions 
 there may differ per cluster. -->
 
 ---
-
+<!-- _footer: 'Alps technical training · Swiss AI Initiative Annual Meeting 2026 · docs.cscs.ch/running/slurm/' -->
 <div class="audience all">Everyone</div>
 
 # A GH200 node is four GPUs and four sockets
@@ -131,7 +131,6 @@ DOCS: docs.cscs.ch/running/slurm/
 -->
 
 ---
-
 <div class="audience">PIs and deputies</div>
 
 # You are billed for the node, not for the work
@@ -174,7 +173,7 @@ Module 4 owner: name the tool you actually recommend (seff, a Grafana dashboard,
 Console job view) and put a real number on this slide, or cut it to a spoken line. -->
 
 ---
-
+<!-- _footer: 'Alps technical training · Swiss AI Initiative Annual Meeting 2026 · docs.cscs.ch/access/jupyterlab/' -->
 <div class="audience all">Everyone</div>
 
 # JupyterLab: a notebook on a compute node
@@ -211,7 +210,7 @@ DOCS: docs.cscs.ch/access/jupyterlab/
 -->
 
 ---
-
+<!-- _footer: 'Alps technical training · Swiss AI Initiative Annual Meeting 2026 · docs.cscs.ch/access/firecrest/' -->
 <div class="audience all">Everyone</div>
 
 # FirecREST: the cluster as an HTTP API
@@ -264,7 +263,6 @@ DOCS: docs.cscs.ch/access/firecrest/ · eth-cscs.github.io/firecrest-v2/
 -->
 
 ---
-
 <!-- _class: ref -->
 
 # Where to read more

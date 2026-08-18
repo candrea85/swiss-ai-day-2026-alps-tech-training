@@ -26,7 +26,6 @@ NEXT: What we did not cover.
 -->
 
 ---
-
 <div class="audience all">Everyone</div>
 
 # What we did not cover
@@ -63,7 +62,6 @@ NEXT: Where to get help.
 -->
 
 ---
-
 <div class="audience all">Everyone</div>
 
 # Three places to get help, in order
@@ -119,7 +117,6 @@ link here. Also confirm whether the ML Platform drop-in sessions are still runni
 on what cadence before promising them from the stage. -->
 
 ---
-
 <!-- _class: divider -->
 
 # Over to you
