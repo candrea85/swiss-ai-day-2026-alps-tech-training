@@ -13,6 +13,25 @@ Cross-referenced in `notes/sources.md`.
 
 ---
 
+## Most urgent: a page documenting a service that no longer exists
+
+- [ ] **`docs.cscs.ch/storage/longterm/` describes a decommissioned service.** The Long
+      Term Storage service has been retired and `lts.cscs.ch` no longer resolves to a
+      portal, but the page is still live and still written in the present tense. It
+      promises 10-year retention and persistent identifiers, offers "2 TB of LTS storage
+      quota (for 10 years) free of charge per project", and quotes a price of
+      "CHF 600.- for each terabyte".
+
+      This is not a gap and not an imprecision. It is a live page telling users that a
+      dead service exists, at a price. Somebody planning where to keep data they must
+      preserve for ten years will act on it. Take the page down or mark it retired, and
+      say what replaces it — if anything does.
+
+      Note that the same section's object storage page is fine: `rgw.cscs.ch` responds
+      and the service is current.
+
+---
+
 ## The portal — `docs.cscs.ch/accounts/waldur/`
 
 The page currently has four sections: the tool, log in, select the organisation, invite

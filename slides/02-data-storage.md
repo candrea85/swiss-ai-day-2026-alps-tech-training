@@ -408,7 +408,6 @@ Re-point the DOCS line once the page is merged. -->
 - **File systems and quotas** — docs.cscs.ch/storage/filesystems/
 - **Data transfer** — docs.cscs.ch/storage/transfer/
 - **Storage guide** — docs.cscs.ch/guides/storage/
-- **Long term storage** — docs.cscs.ch/storage/longterm/
 - **Object storage** — docs.cscs.ch/storage/object/
 
 ### Platform specifics

@@ -55,11 +55,14 @@ Four pages under `/storage/`, plus one guide outside it. Verified quotations:
   many small files" — demonstrated with a PyTorch virtual environment of **22,806
   inodes**, with the recommendation to squash it into a squashfs image. That example is
   now on the module 2 inodes slide and hands off to module 3.
-- **`/storage/longterm/`** — not on a slide, the long-term-storage slide was cut. Kept
-  here because the numbers are concrete and a PI may ask: `lts.cscs.ch`, 10-year
-  retention, persistent identifiers, "2 TB of LTS storage quota (for 10 years) free of
-  charge per project" for User Lab, then "CHF 600.- for each terabyte (for 10 years)".
-  The PI grants LTS permissions to team members through the portal.
+- **`/storage/longterm/`** — **do not use this page.** Per Andrea, the Long Term Storage
+  service has been **decommissioned entirely** and `lts.cscs.ch` no longer exists; a
+  request to it does not reach a portal. The documentation page is nevertheless still
+  live and still describes the service in the present tense, complete with a 10-year
+  retention promise, a "2 TB ... free of charge per project" allocation and a price of
+  "CHF 600.- for each terabyte". Nothing from it is used in this deck, and the link was
+  removed from module 2's closing slide. See `notes/docs-gaps.md` — this is the most
+  urgent item there.
 - **`/storage/object/`** — also not on a slide. Ceph Object Gateway, S3-compatible, at
   `https://rgw.cscs.ch`. Works with the AWS CLI, s3cmd and Cyberduck; quota via the
   `/_quota` endpoint.
