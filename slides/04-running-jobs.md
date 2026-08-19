@@ -27,7 +27,7 @@ START AT T+45:00. Check the presenter timer now.
 CUT IF LATE: Cut "You are billed for the node, not for the work". Say it in one line over the GH200 slide instead.
 SAY:
 - Ben has his data and his container. Now he has to actually run.
-- Three things in twelve minutes: Slurm, whether your job is efficient, and the web ways in.
+- Four things in twelve minutes: Slurm, whether your job is efficient, the two ways in through a browser, and the inference API.
 NEXT: Slurm, and the one flag that decides who pays.
 -->
 
@@ -213,54 +213,111 @@ DOCS: docs.cscs.ch/access/jupyterlab/
 <!-- _footer: 'Alps technical training · Swiss AI Initiative Annual Meeting 2026 · docs.cscs.ch/access/firecrest/' -->
 <div class="audience all">Everyone</div>
 
-# FirecREST: the cluster as an HTTP API
+# The HPC Console: the cluster in a browser
 
-For CI pipelines, workflow engines and anything that cannot hold an SSH key.
+`console.mlp.cscs.ch` — nothing to install, and it needs no agent on the cluster.
 
 <div class="cols">
 <div>
 
-**ML Platform endpoint**
-
-`api.cscs.ch/ml/firecrest/v2`
-
-Lets you do, over HTTP:
-
-- filesystem operations — `ls`, `mkdir`, `mv`, `chmod`
-- Slurm — submit, query, cancel
-- data transfers, internal and external
+- **Dashboard** — cluster health. It will stop you submitting to a degraded cluster
+- **Jobs** — list, filter, submit, and inspect logs
+- Every job has a **shareable URL**: send a colleague the failing job, not a screenshot
+- **Files** — browse, preview, upload
 
 </div>
 <div class="card">
 
-### How it authenticates
+### The same API underneath
 
-A client ID and secret, exchanged for a short-lived **JWT access token**, valid **5 minutes**.
+It runs on **FirecREST**, so anything the console does, your own script can do:
 
-No user password. This is what a service account is for — see module 1.
+`api.cscs.ch/ml/firecrest/v2`
+
+Client ID and secret, exchanged for a 5-minute token. No passwords in CI — this is what a **service account** is for.
 
 </div>
 </div>
 
 <div class="accent">
 
-And there is a web interface on top of it: **`console.mlp.cscs.ch`**
+Same login as everything else. Longer version in the backup slides, if you want it.
 
 </div>
 
 <!--
 SAY:
-- FirecREST turns the cluster into a REST API.
-- One endpoint per platform. Yours is the ml one.
-- Over HTTP you can list files, make directories, submit and cancel Slurm jobs, and move data.
-- Authentication is a client ID and secret exchanged for a token that lives five minutes. No passwords in scripts.
-- This is exactly what the service accounts from module 1 are for.
-POINT AT THE RED BAR:
-- And you do not have to write the HTTP yourself. There is a web console on top, console dot mlp dot cscs dot ch.
-- We have backup slides on it if the discussion wants them.
-NEXT: Where to read more.
+- Third way in, and the one fewest of you will have seen.
+- A browser pointed at the cluster. Nothing to install, and no agent running as you on the cluster.
+- The dashboard shows cluster health, and it will refuse to submit to a degraded cluster. That alone saves a failed overnight run.
+- Jobs: list, filter, submit, read the logs.
+- The feature I would highlight is the shareable per-job URL. It replaces the screenshot-in-Slack workflow that most debugging conversations start with.
+POINT AT THE CARD:
+- It runs on FirecREST, and that is the useful part: anything the console can do, your script can do, because it is the same API.
+- Client ID and secret for five-minute tokens. No passwords in a pipeline. That is what the service accounts from module 1 are for.
+- We have five more slides on this in backup if the discussion wants them.
+NEXT: One last thing, and it does not involve a cluster at all.
 DOCS: docs.cscs.ch/access/firecrest/ · eth-cscs.github.io/firecrest-v2/
 -->
+
+---
+<!-- _footer: 'Alps technical training · Swiss AI Initiative Annual Meeting 2026 · docs.cscs.ch/services/inference/api/' -->
+<div class="audience all">Everyone</div>
+
+# You can use a model without training one
+
+`https://api.inference.cscs.ch/v1` — **OpenAI and Anthropic compatible**. Change a base URL and your existing code works.
+
+<div class="cols-wide">
+<div>
+
+- Open-weight models, served and managed for you — **Apertus 70B** and **8B**, among others
+- **The PI or deputy PI** creates the inference resource in `portal.cscs.ch`
+- Then **any project member** can create API keys
+- Optional per-key token budget, reset period and model restrictions
+
+</div>
+<div class="card">
+
+### It is not free, it is yours
+
+> "The credit for the inference resource is taken from your project's credit."
+
+The same credit as module 1. Inference spends it, like any job.
+
+</div>
+</div>
+
+<div class="accent">
+
+The docs also show how to point **Claude Code** and **OpenCode** at it.
+
+</div>
+
+<!--
+This one is for a Swiss AI room specifically. Do not rush it.
+SAY:
+- Last thing, and it does not involve a cluster, a container or Slurm at all.
+- There is a managed inference API. Open-weight models, served for you, behind a public endpoint.
+- It is OpenAI and Anthropic compatible, so whatever you already wrote works if you change the base URL.
+- And it serves Apertus, which is your own model.
+- Many of you want to use a model rather than train one. This is that, and until today we were not telling you about it.
+HOW YOU GET IT, and note the split:
+- The PI or the deputy PI creates an inference resource in the portal. The same portal as module 1.
+- After that, any member of the project can create their own API keys.
+- Per key you can set a token budget, a reset period, and which models are allowed.
+BE HONEST ABOUT THE COST. Read the quotation out loud:
+- The credit comes out of the project credit. It is not a free extra.
+- So it lands on the same budget as the linear consumption slide in module 1.
+POINT AT THE RED BAR:
+- And the documentation shows how to wire it into Claude Code and OpenCode, if that is how you work.
+NEXT: Where to read more.
+DOCS: docs.cscs.ch/services/inference/api/
+-->
+
+<!-- TODO(verify): model names and pricing move. Re-check the model list and the
+"Available models and pricing" section the week before the session, and confirm the
+Apertus tag swiss-ai/Apertus-70B-Instruct-2509 is still current if you quote it. -->
 
 ---
 <!-- _class: ref -->
@@ -278,8 +335,12 @@ DOCS: docs.cscs.ch/access/firecrest/ · eth-cscs.github.io/firecrest-v2/
 ### Other ways in
 
 - **JupyterLab** — docs.cscs.ch/access/jupyterlab/
-- **FirecREST** — docs.cscs.ch/access/firecrest/
+- **HPC Console and FirecREST** — docs.cscs.ch/access/firecrest/
 - **FirecREST v2** — eth-cscs.github.io/firecrest-v2/
+
+### Inference
+
+- **LLM Inference API** — docs.cscs.ch/services/inference/api/
 
 ### Worked examples
 
@@ -288,15 +349,16 @@ DOCS: docs.cscs.ch/access/firecrest/ · eth-cscs.github.io/firecrest-v2/
 </div>
 <div class="card dark">
 
-### Three ways in, same cluster
+### Four ways in
 
 - `ssh` — full control
 - `jupyter-clariden.cscs.ch` — a notebook
 - `console.mlp.cscs.ch` — a browser
+- `api.inference.cscs.ch` — no cluster at all
 
-### One flag that matters
+### One thing they share
 
-`--account` — it decides who pays.
+They all spend the **same project credit**.
 
 </div>
 </div>
@@ -304,7 +366,7 @@ DOCS: docs.cscs.ch/access/firecrest/ · eth-cscs.github.io/firecrest-v2/
 <!--
 Do not read this slide out loud.
 SAY only:
-- Three doors into the same cluster. SSH, Jupyter, the console. Pick whichever fits the task.
-- And one flag: account. It decides who pays.
+- Four ways in. SSH, Jupyter, the console, and the inference API. Pick whichever fits the task.
+- And the thing they have in common: they all spend the same project credit.
 NEXT: hand over to module 5.
 -->

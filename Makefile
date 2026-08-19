@@ -17,7 +17,10 @@
 #     <div class="cols"> / <div class="card"> layout blocks, stripped otherwise.
 #   * --pptx-editable is NOT used: that experimental mode drops presenter notes.
 
-MARP        := npx --yes @marp-team/marp-cli@4.5.0
+# --no-stdin is not optional: without a terminal, marp-cli waits on stdin forever and
+# the build hangs rather than failing. That bites any non-interactive run — a script, a
+# background job, CI.
+MARP        := npx --yes @marp-team/marp-cli@4.5.0 --no-stdin
 BUILD       := build
 
 # The theme is rebuilt with its logos inlined as data URIs. Marp injects the theme
