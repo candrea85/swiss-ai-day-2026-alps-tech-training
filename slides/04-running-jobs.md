@@ -274,7 +274,7 @@ DOCS: docs.cscs.ch/access/firecrest/ · eth-cscs.github.io/firecrest-v2/
 - Open-weight models, served and managed for you — **Apertus 70B** and **8B**, among others
 - **The PI or deputy PI** creates the inference resource in `portal.cscs.ch`
 - Then **any project member** can create API keys
-- Optional per-key token budget, reset period and model restrictions
+- Each key can carry its own **token budget**, reset period and allowed models — so one script cannot drain the project
 
 </div>
 <div class="card">
@@ -305,7 +305,10 @@ SAY:
 HOW YOU GET IT, and note the split:
 - The PI or the deputy PI creates an inference resource in the portal. The same portal as module 1.
 - After that, any member of the project can create their own API keys.
-- Per key you can set a token budget, a reset period, and which models are allowed.
+- And this is the part worth dwelling on if you are a PI.
+- Each key can carry its own token budget, a period after which that budget resets, and a list of allowed models.
+- Since the credit comes out of the project, an API key is a spending instrument. Per-key budgets are how you stop one runaway script draining the project.
+- The key is shown once when it is created. Put it in a password manager.
 BE HONEST ABOUT THE COST. Read the quotation out loud:
 - The credit comes out of the project credit. It is not a free extra.
 - So it lands on the same budget as the linear consumption slide in module 1.
