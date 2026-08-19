@@ -88,6 +88,14 @@ the documentation repository. Add to it as modules 2 to 5 are written.
   account), nor that a **later invitation re-enables the same account** instead of
   creating a new one. Both are true and both are worth documenting — they are the
   difference between "my account was deleted" and "my account is dormant".
+- **There is no project-level cap on inference spending — today.** The documentation
+  describes the optional per-key token budget but never says what happens without one.
+  Per Andrea: nothing. A single API key with no budget can consume the whole project
+  credit. The slide therefore words it as an instruction — "set a token budget on every
+  key, today it is the only limit there is" — rather than as an announcement that the
+  guardrail is missing, and the speaker notes leave the presenter to judge how explicit
+  to be. Expected to change: **re-check before the session**, and if a project-level
+  limit has landed by then, the bullet should say so instead.
 - **"We are actively improving these views"** on the consumption slide is a
   forward-looking statement, not a documented fact: better usage visualisation for
   compute, for storage, and for the new inference resources. It is Andrea's to make
