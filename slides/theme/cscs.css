@@ -209,6 +209,43 @@ pre code {
   line-height: 1.62;
 }
 
+/* Syntax highlighting.
+   The imported default theme ships a highlight.js palette built for a light
+   background — on our near-black code blocks its strings come out dark blue on dark
+   grey and are unreadable from three metres away. These are the same tokens in
+   colours chosen for #1A1A1A, and they apply to every code block in the deck. */
+
+pre code.hljs { color: #F0F0F0; }
+
+pre .hljs-string,
+pre .hljs-attr,
+pre .hljs-attribute,
+pre .hljs-addition        { color: #9FD3A8; }
+
+pre .hljs-variable,
+pre .hljs-template-variable,
+pre .hljs-subst,
+pre .hljs-selector-tag    { color: #F3B6B9; }
+
+pre .hljs-keyword,
+pre .hljs-built_in,
+pre .hljs-type,
+pre .hljs-title,
+pre .hljs-section         { color: #A8C8F0; }
+
+pre .hljs-number,
+pre .hljs-literal,
+pre .hljs-symbol,
+pre .hljs-bullet          { color: #E8C07D; }
+
+pre .hljs-meta,
+pre .hljs-meta .hljs-keyword,
+pre .hljs-comment,
+pre .hljs-quote           { color: #8F8F94; }
+
+pre .hljs-name,
+pre .hljs-params          { color: #F0F0F0; }
+
 /* ── Tables ─────────────────────────────────────────────────────────────── */
 
 table {
