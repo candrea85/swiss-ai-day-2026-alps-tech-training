@@ -269,12 +269,17 @@ DOCS: docs.cscs.ch/access/firecrest/ · eth-cscs.github.io/firecrest-v2/
 `https://api.inference.cscs.ch/v1` — **OpenAI and Anthropic compatible**. Change a base URL and your existing code works.
 
 <div class="cols-wide">
-<div>
+<div class="code-sm">
 
 - Open-weight models, served and managed for you — **Apertus 70B** and **8B**, among others
-- **The PI or deputy PI** creates the inference resource in `portal.cscs.ch`
-- Then **any project member** can create API keys
-- **Set a token budget on every key** — plus a reset period and the allowed models. Today it is the only limit there is
+- The **PI or deputy PI** creates the inference resource in `portal.cscs.ch`; then **any project member** can create API keys
+- **Set a token budget on every key.** Today it is the only limit there is
+
+```bash
+curl -X POST https://api.inference.cscs.ch/v1/chat/completions \
+  -H "Authorization: Bearer $CSCS_INFERENCE_API_KEY" \
+  -d '{"model": "swiss-ai/Apertus-70B-Instruct-2509", "messages": [...]}'
+```
 
 </div>
 <div class="card">
@@ -319,6 +324,9 @@ THE HONEST VERSION. Decide in the room how far you go:
 BE HONEST ABOUT THE COST. Read the quotation out loud:
 - The credit comes out of the project credit. It is not a free extra.
 - So it lands on the same budget as the linear consumption slide in module 1.
+POINT AT THE CURL:
+- Three lines. That is the whole thing. Endpoint, bearer token, model name.
+- If you have written against the OpenAI API, you have already written this.
 POINT AT THE RED BAR:
 - And the documentation shows how to wire it into Claude Code and OpenCode, if that is how you work.
 NEXT: Where to read more.
